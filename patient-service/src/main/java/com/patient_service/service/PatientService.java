@@ -7,7 +7,6 @@ import com.patient_service.mapper.PatientMapper;
 import com.patient_service.model.Patient;
 import com.patient_service.repository.PatientRepo;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -56,5 +55,9 @@ public class PatientService {
         patient.setDateOfBirth(LocalDate.parse(patientRequestDto.getDateOfBrith()));
         patient.setEmail(patientRequestDto.getEmail());
         return PatientMapper.toDto(patient);
+    }
+
+    public void deletePatient(UUID id){
+        patientRepo.deleteById(id);
     }
 }
