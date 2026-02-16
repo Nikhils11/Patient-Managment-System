@@ -33,6 +33,19 @@ pipeline {
             }
         }
 
+        stage('Merge PR') {
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
+            steps {
+                sh '''
+                curl -X PUT \
+                -H "Authorization: token YOUR_GITHUB_TOKEN" \
+                https://api.github.com/repos/user/repo/pulls/PR_NUMBER/merge
+                '''
+            }
+        }
+
     }
 
     post {
