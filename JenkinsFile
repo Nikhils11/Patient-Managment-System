@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/Nikhils11/project.git'
+                url: 'https://github.com/Nikhils11/Patient-Managment-System.git'
             }
         }
 
