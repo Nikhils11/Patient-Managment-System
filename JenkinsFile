@@ -17,6 +17,7 @@ pipeline {
 
         stage('Build') {
             steps {
+               dir('patient-service')
                 bat 'mvn clean compile'
             }
         }
