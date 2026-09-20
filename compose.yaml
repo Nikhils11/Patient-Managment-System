@@ -1,0 +1,26 @@
+services:
+  patient-service:
+    build:
+      context: ./patient-service
+      dockerfile: Dockerfile.yaml
+    ports:
+      - "4000:4000"
+    depends_on:
+      patient-service-db:
+        condition: service_healthy
+    environment:
+      POSTGRES_PASSWORD: nikhil@123
+      SPRING_DATASOURCE_URL: jdbc:postgressql://patient-service-db:5432/
+
+  patient-service-db:
+    image: postgres:18
+    environment:
+      - POSTGRES_PASSWORD=nikhil@123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "petclinic"]
+volumes:
+  postgres_data:
