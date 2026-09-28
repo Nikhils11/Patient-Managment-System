@@ -20,7 +20,7 @@ services:
       # - POSTGRES_DB=patientServiceDB
       # I am using a openSLL base 64 encrypted password for the postgres user. This password is just an exmaple pleaes update it before using
       - POSTGRES_PASSWORD=SimplePass123
-      - POSTGRES_DATABASE=patientServiceDB
+      - POSTGRES_DB=patientServiceDB
     ports:
       - "5432:5432"
     volumes:
