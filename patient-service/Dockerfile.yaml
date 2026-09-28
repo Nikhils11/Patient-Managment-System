@@ -14,7 +14,7 @@ FROM  eclipse-temurin:25 AS runner
 
 WORKDIR /app
 
-COPY --from=builder ./app/target/patinet-service-0.0.1-SNAPSHOT.jar patient-service.jar
+COPY --from=builder ./app/target/patient-service-0.0.1-SNAPSHOT.jar patient-service.jar
 
 EXPOSE 4000
 
