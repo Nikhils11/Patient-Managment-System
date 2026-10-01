@@ -32,7 +32,7 @@ public class PatientController {
     @PostMapping
     public ResponseEntity<PatientResponseDto> createPatient(
             @Valid @RequestBody PatientRequestDto patientRequestDto) {
-        System.out.println(patientRequestDto.getdateOfBirth().toString());
+        System.out.println(patientRequestDto.getDateOfBirth().toString());
         PatientResponseDto patientResponseDto = patientService.createPatient(patientRequestDto);
         return ResponseEntity.ok().body(patientResponseDto);
     }
@@ -43,6 +43,11 @@ public class PatientController {
 
         PatientResponseDto patientResponseDto = patientService.updatePatient(id, patientRequestDto);
         return ResponseEntity.ok().body(patientResponseDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<PatientResponseDto> deletePatient(@PathVariable UUID id) {
+        return ResponseEntity.ok().body(patientService.deletePatient(id));
     }
 
 }

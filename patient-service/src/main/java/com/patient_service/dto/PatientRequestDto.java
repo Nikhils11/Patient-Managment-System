@@ -50,11 +50,11 @@ public class PatientRequestDto {
         this.email = email;
     }
 
-    public LocalDate getdateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setdateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         System.out.println(dateOfBirth.toString());
         this.dateOfBirth = dateOfBirth;
     }

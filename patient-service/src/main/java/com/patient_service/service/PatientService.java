@@ -53,8 +53,16 @@ public class PatientService {
                 () -> new PatientNotFoundException("Patient not found with this ID: " + Id));
         patient.setName(patientRequestDto.getName());
         patient.setAddress(patientRequestDto.getAddress());
-        patient.setDateOfBirth(LocalDate.parse(patientRequestDto.getdateOfBirth().toString()));
+        patient.setDateOfBirth(LocalDate.parse(patientRequestDto.getDateOfBirth().toString()));
         patient.setEmail(patientRequestDto.getEmail());
+        patientRepo.save(patient);
+        return PatientMapper.toDto(patient);
+    }
+
+    public PatientResponseDto deletePatient(UUID id) {
+        Patient patient = patientRepo.findById(id).orElseThrow(
+                () -> new PatientNotFoundException("This patient does not exist"));
+        patientRepo.delete(patient);
         return PatientMapper.toDto(patient);
     }
 }
